@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Login & Registration</title>
+    <link rel="stylesheet" href="{% static 'registration/css/login.css' %}"/>
+    <!-- Unicons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"/>
+</head>
+<body>
+
+
+<section class="home">
+    <div class="form_container">
+        <!-- Login From -->
+        <div class="form login_form">
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <h2>Login</h2>
+                <div class="input_box">
+                    <!--                    <input type="username" placeholder="Enter your email" required/>-->
+                    {{ form.username }}
+                    <i class="uil uil-envelope-alt email"></i>
+                </div>
+                <div class="input_box">
+                    <!--                    <input type="password" placeholder="Enter your password" required/>-->
+                    <input type="password" name="password" placeholder="Введите пароль">
+
+                    <i class="uil uil-lock password"></i>
+                    <i class="uil uil-eye-slash pw_hide"></i>
+                </div>
+
+                <div class="option_field">
+                    <span class="checkbox">
+                        <input type="checkbox" id="check"/><label for="check">Запомнить меня</label>
+                    </span>
+                    <a href="#" class="forgot_pw">Забыли пароль?</a>
+                </div>
+                <div class="errors">
+                    {% if form.errors %}
+                    <p>{{ form.errors.error }}</p>
+                    {% endif %}
+                </div>
+                <button type="submit" class="button">Войти</button>
+
+                <div class="login_signup">Еще нет аккаунта? <a href="{% url 'registration' %}"
+                                                               id="signup">Регистрация</a></div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script src="{% static 'registration/js/login.js' %}"></script>
+</body>
+</html>

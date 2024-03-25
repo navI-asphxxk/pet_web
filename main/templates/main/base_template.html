@@ -1,10 +1,101 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>{% block title %}{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/navigation.css' %}">
+    <link rel="stylesheet" href="{% static 'news/css/news.css' %}">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Burned&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/31d1760571.js" crossorigin="anonymous"></script>
 </head>
 <body>
-$END$
+<header class="header">
+
+    <div class="upper">
+        <a href="{% url 'about' %}"><i class="fa-solid fa-circle-info"></i> О нас</a>
+        <a href="{% url 'reviews' %}"><i class="fa-solid fa-comments"></i> Отзывы</a>
+    </div>
+    <div class="wrapper wrapper_header">
+        <a href="{% url 'home' %}" class="logo">
+            <img src="{% static 'main/img/logo.svg' %}" alt="Logo" width="1377" height="180">
+        </a>
+        <!--        <span class="logo">IT</span>-->
+        <nav class="nav">
+            <div class="menuCustom">
+                <div class="navmain">
+                    <a href="{% url 'customHome' %}">Кастомизация ПК</a>
+                </div>
+                <div class="submenu">
+                    <button class="buttonmenu" onclick="window.location.href='{% url 'customPC' %}'">Custom PC
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Описание</span>
+                    </button>
+                    <button class="buttonmenu" onclick="window.location.href='{% url 'customDevice' %}'">Custom Devices
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>descrip</span>
+                    </button>
+                </div>
+            </div>
+            <div class="menuDev">
+                <div class="navmain">
+                    <a href="{% url 'devHome' %}">Прочие услуги</a>
+                </div>
+                <div class="submenu">
+                    <button class="buttonmenu" onclick="window.location.href='{% url 'webDev' %}'">Web-разработка
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>descrip</span>
+                    </button>
+                    <button class="buttonmenu" onclick="window.location.href='{% url 'botDev' %}'">Bot-разработка
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>descrip</span>
+                    </button>
+                </div>
+            </div>
+            <div class="navmain">
+                <a href="{% url 'news_home' %}">Новости</a>
+            </div>
+
+            {% if user.is_authenticated %}
+            <div class="profile">
+                <a href="{% url 'profile' %}">
+                    <i class="fa-solid fa-address-card"></i>
+                    <span>{{ user.first_name }}</span>
+                    <span>{{ user.phone }}</span>
+                </a>
+                <div class="optionsprofile">
+                    <button class="optionbutton" onclick="window.location.href='{% url 'profile' %}'">Профиль</button>
+                    <button class="optionbutton" onclick="window.location.href='{% url 'feedback' %}'">Обратная связь</button>
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button class="optionbutton" type="submit">Выйти</button>
+                    </form>
+                </div>
+            </div>
+            {% else %}
+            <button class="button" onclick="window.location.href='{% url 'login' %}'" id="form-open">Войти</button>
+            {% endif %}
+        </nav>
+    </div>
+
+
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+<div class="footer">
+    {% include 'main/footer.html' %}
+</div>
 </body>
 </html>

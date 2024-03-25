@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'registration/css/login.css' %}"/>
+    <!-- Unicons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"/>
+</head>
+<body>
+
+
+<section class="home">
+    <div class="form_container">
+
+        <!-- Signup From -->
+        <div class="form signup_form">
+            <form action="{% url 'registration' %}" method="post">
+                {% csrf_token %}
+                <!--                <div class="test">-->
+                <!--                    {{ form }}-->
+                <!--                    <button type="submit">smbt</button>-->
+                <!--                </div>-->
+                <h2>Registration</h2>
+
+                <div class="input_box">
+                    <!--                    <input type="text" placeholder="What's your name?" required/>-->
+                    <input type="text" name="first_name" placeholder="Введите ваше имя">
+
+                    <i class="uil uil-envelope-alt email"></i>
+                </div>
+                <div class="input_box">
+                    <!--                    <input type="number" placeholder="Enter your phone" required/>-->
+                    <input type="text" name="email" placeholder="Ваш адрес электронной почты">
+
+                    <i class="uil uil-envelope-alt email"></i>
+                </div>
+                <div class="input_box">
+                    <!--                    <input type="email" placeholder="Enter your email" required/>-->
+                    <input type="text" name="phone" placeholder="Ваш номер телефона">
+
+                    <i class="uil uil-envelope-alt email"></i>
+                </div>
+                <div class="input_box">
+                    <!--                    <input type="password" placeholder="Create password" required/>-->
+                    <input type="password" name="password1" placeholder="Придумайте пароль">
+
+                    <i class="uil uil-lock password"></i>
+                    <i class="uil uil-eye-slash pw_hide"></i>
+                </div>
+                <div class="input_box">
+                    <!--                    <input type="password" placeholder="Confirm password" required/>-->
+                    <input type="password" name="password2" placeholder="Повторите пароль">
+
+                    <i class="uil uil-lock password"></i>
+                    <i class="uil uil-eye-slash pw_hide"></i>
+                </div>
+                <div class="errors">
+                    {% if form.errors %}
+                    <p>{{ form.errors }}</p>
+                    {% endif %}
+                </div>
+
+                <button type="submit" class="button">Регистрация</button>
+
+                <div class="login_signup">Уже есть аккаунт? <a href="{% url 'login' %}" id="login">Войти</a></div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script src="{% static 'registration/js/login.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+.nav .button {
+    margin-left: 165px;
+    margin-right: 70px;
+
+}
+.nav .profile {
+    margin-left:165px;
+    margin-right: 70px;
+}
+.button {
+    padding: 6px 24px;
+    border: 2px solid #fff;
+    background: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #fff;
+}
+.button:active {
+    transform: scale(0.98);
+}
+
+
+.navmain {
+    text-align: center;
+    font-size: 23px;
+    display: inline-block; /* Используйте inline-block вместо block, для выравнивания элементов по центру */
+    text-decoration: none;
+    padding: 0px 50px; /* Увеличьте отступы для равномерного распределения */
+    transition: transform 0.6s ease;
+}
+
+.nav a {
+    color: mediumpurple;
+}
+
+.navmain:hover {
+    transform: scale(1.1);
+}
+.navmain a:hover {
+    color: white;
+}
+.menuCustom, .menuDev {
+    display: inline-block;
+    position: relative;
+}
+
+.submenu {
+    background-color: #2b2b2b;
+    font-size: 19px;
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+}
+.buttonmenu {
+    background-color: #2b2b2b;
+    color: gray;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 15px;
+    margin-left: 40px;
+    margin-top: 20px;
+    width: 40%;
+    border: none;
+    border-radius: 25px;
+}
+
+.buttonmenu:hover {
+    background-color: #1e1e1e;
+}
+
+.buttonmenu i {
+    margin-top: -12px;
+    margin-left: auto;
+}
+
+.menuCustom:hover .submenu, .menuDev:hover .submenu {
+    display: block;
+}
+
+.buttonmenu span {
+    margin-top: -15px;
+    font-size: 15px;
+}
+
+
+.profile {
+    margin-top: 8px;
+    text-align: right;
+    margin-right: 10px;
+    font-size: 18px;
+}
+.optionsprofile {
+    background-color:  #343434;
+    margin-right: 10px;
+    font-size: 19px;
+    display: none;
+    position: absolute;
+    width: 25%;
+    height: 35%;
+    right: 0;
+    border-radius: 25px;
+    border: 1px solid gray;
+    text-align: center;
+    box-shadow: 0 0 20px #7d2ae8;
+
+}
+
+.profile:hover .optionsprofile {
+    display: inline-block;
+}
+
+.profile a i {
+    display: block;
+    text-align: center;
+}
+
+.profile a span {
+    display: block;
+    text-align: center;
+}
+
+.optionbutton {
+    background-color: #2b2b2b;
+    color: gray;
+    margin-top: 25px;
+    border: 1px solid gray;
+    border-radius: 25px;
+    width: 250px;
+    height: 50px;
+}
+
+.optionsprofile button:hover {
+    background-color: #1e1e1e;
+}
